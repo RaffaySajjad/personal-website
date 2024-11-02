@@ -11,7 +11,7 @@ export const Navbar: React.FC = () => {
       <div className="mi-header-inner">
         <div className="mi-header-image">
           <Link to="/">
-            <img src="/images/brand-image.jpg" alt="brandimage" />
+            <img src="/images/brand-image-new.jpg" alt="brandimage" />
           </Link>
         </div>
         <ul className="mi-header-menu">

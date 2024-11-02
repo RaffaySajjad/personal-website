@@ -1,11 +1,32 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 export const Navbar: React.FC = () => {
+  const isMobile = useIsMobile();
   const { pathname } = useLocation();
+  const [mobileHeaderX, setMobileHeaderX] = useState(isMobile ? "-100%" : "0%");
+
+  const toggleMobileHeader = () => {
+    if (!isMobile) return;
+    setMobileHeaderX(mobileHeaderX === "-100%" ? "0%" : "-100%");
+  };
+
+  useEffect(() => {
+    setMobileHeaderX("-100%");
+  }, [pathname]);
 
   return (
-    <nav className="mi-header">
-      <button className="mi-header-toggler">
+    <nav
+      style={
+        isMobile
+          ? {
+              transform: `translateX(${mobileHeaderX})`,
+            }
+          : undefined
+      }
+      className="mi-header">
+      <button className="mi-header-toggler" onClick={toggleMobileHeader}>
         <i className="lni lni-menu size-md"></i>
       </button>
       <div className="mi-header-inner">
